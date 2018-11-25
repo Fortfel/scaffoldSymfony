@@ -1,0 +1,3 @@
+**/*.min.css
+**/vendor/
+**/public/css/**/*.css

@@ -1,0 +1,23 @@
+ip: 192.168.10.10
+memory: 2048
+cpus: 1
+provider: virtualbox
+authorize: ~/.ssh/id_rsa.pub
+keys:
+    - ~/.ssh/id_rsa
+folders:
+    -
+        map: ./
+        to: /home/vagrant/project
+sites:
+    -
+        map: homestead.test
+        to: /home/vagrant/project/public
+        type: symfony4
+        options:
+            rsync__exclude: [".idea/", ".git/", "node_modules/"]
+        php: '7.2'
+databases:
+    - homestead
+name: project
+hostname: project
