@@ -12,7 +12,7 @@
     "copy": "npm-run-all --parallel css-copy js-copy",
     "css": "npm-run-all --parallel css-lint css-compile --sequential css-prefix css-minify",
     "css-compile": "node-sass --output-style expanded --source-map true --source-map-contents true --precision 6 public/css/scss/main.scss public/css/main.css",
-    "css-copy": "shx mkdir -p public/css/vendor && shx cp -r \"node_modules/bootstrap/dist/css/bootstrap.*\" public/css/vendor",
+    "css-copy": "shx mkdir -p public/css/vendor/fontawesome-free/webfonts public/css/vendor/fontawesome-free/css && shx cp -r \"node_modules/bootstrap/dist/css/bootstrap.*\" public/css/vendor & shx cp -r \"node_modules/@fortawesome/fontawesome-free/css/all.*\" public/css/vendor/fontawesome-free/css & shx cp -r \"node_modules/@fortawesome/fontawesome-free/webfonts/*\" public/css/vendor/fontawesome-free/webfonts",
     "css-lint": "stylelint --syntax scss \"public/css/scss/**/*.scss\"",
     "css-prefix": "postcss --config postcss.config.js --replace \"public/css/*.css\" \"!public/css/*min.css\"",
     "css-minify": "cleancss --format \"breakWith:unix\" --level 1 --source-map --source-map-inline-sources --output public/css/main.min.css public/css/main.css",
@@ -46,6 +46,7 @@
     "popper.js": "^1.14.3"
   },
   "devDependencies": {
+    "@fortawesome/fontawesome-free": "^5.5.0",
     "autoprefixer": "^8.6.5",
     "broken-link-checker": "^0.7.8",
     "bundlesize": "^0.15.3",
