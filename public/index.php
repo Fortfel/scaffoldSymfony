@@ -26,6 +26,5 @@ $response = $kernel->handle($request);
 $response->send();
 $kernel->terminate($request, $response);
 
-// TODO obczaic assets bundle dla symfony
 // TODO update README
 // TODO sprawdzic czy projekt dziala po odpaleniu na serwerze
