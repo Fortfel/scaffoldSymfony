@@ -26,7 +26,9 @@
     "laravel/homestead": "^7.18",
     "sensiolabs/security-checker": "^5.0",
     "squizlabs/php_codesniffer": "^3.3",
-    "symfony/dotenv": "4.1.*"
+    "symfony/debug-pack": "^1.0",
+    "symfony/dotenv": "4.1.*",
+    "symfony/twig-bundle": "4.1.*"
   },
   "config": {
     "preferred-install": {
