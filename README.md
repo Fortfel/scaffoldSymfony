@@ -1,6 +1,6 @@
-# Fortel web app skeleton
+# Fortel Symfony web app skeleton
 
-Startup template for web application.
+Startup template for web application. Based on Symfony4.
 
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
@@ -23,7 +23,7 @@ A step by step series of examples that tell you how to get a development env run
 Clone the repository using Git
 
 ```
-git clone https://bitbucket.org/Fortfel/basic-templates.git project-name
+git clone https://Fortfel@bitbucket.org/Fortfel/basic-symfony-web-template.git project-name
 cd project-name/
 ```
 
@@ -64,6 +64,7 @@ or if you want to run selected tests type e.g.
 
 ```
 npm run test-behat -- features/test-name.feature
+npm run test-behat -- features/test-name.feature:18   // will run scenario under line 18
 npm run test-behat -- --suite=suite-name
 npm run test-behat -- --suite=suite-name features/test-name.feature
 ```
