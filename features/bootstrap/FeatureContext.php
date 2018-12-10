@@ -1,5 +1,6 @@
 <?php
-//phpcs:ignoreFile
+require_once __DIR__.'/../../bin/.phpunit/phpunit-6.5/vendor/autoload.php';
+require_once __DIR__.'/../../bin/.phpunit/phpunit-6.5/src/Framework/Assert/Functions.php';
 
 use Behat\Behat\Context\Context;
 use Behat\Gherkin\Node\PyStringNode;
