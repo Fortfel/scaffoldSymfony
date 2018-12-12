@@ -6,10 +6,11 @@ default:
       goutte: ~
       selenium2:
         browser: chrome
+        wd_host: "http://192.168.10.10:4444/wd/hub"
         capabilities:
           chrome:
             switches:
-              - "--headless"
+#              - "--headless"
       show_cmd: 'chrome %s'
     Behat\Symfony2Extension:
       kernel:

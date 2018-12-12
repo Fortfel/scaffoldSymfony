@@ -6,7 +6,7 @@
   "scripts": {
     "start": "vagrant up && npm run watch --silent",
     "stop": "vagrant halt",
-    "postinstall": "npm run copy & shx rm -rf .git/ && git init",
+    "postinstall": "npm run copy & shx rm -rf .git/ && npm run selenium-server-install && git init",
     "check-broken-links": "blc --exclude-external --filter-level 3 --get --ordered --recursive --host-requests 4 --input http://192.168.10.10/",
     "bundlesize": "bundlesize",
     "copy": "npm-run-all --parallel css-copy js-copy",
@@ -27,10 +27,12 @@
     "watch-css": "nodemon --watch public/css/scss/ --ext scss --exec \"npm run css\"",
     "watch-js": "nodemon --watch public/js/ --ignore \"**/*.min.js\" --ignore public/js/vendor/ --ext js --exec \"npm run js\"",
     "watch-php": "nodemon --watch public/ --watch src/ --ext php --exec \"npm run php-lint\"",
-    "test": "npm-run-all lint test-behat bundlesize",
-    "test-behat": ".\\vendor\\bin\\behat",
-    "preselenium-server-start": "npm run selenium-server-install",
-    "selenium-server-start": "selenium-standalone start --version=3.14.0 --baseURL=https://selenium-release.storage.googleapis.com --drivers.chrome.version=2.43 --drivers.chrome.baseURL=https://chromedriver.storage.googleapis.com",
+    "test": "npm-run-all test-behat test-unit",
+    "test-behat": "vendor/bin/behat",
+    "test-unit": "bin/phpunit",
+    "selenium-hub": "selenium-standalone start --version=3.14.0 --baseURL=https://selenium-release.storage.googleapis.com --drivers.chrome.version=2.43 --drivers.chrome.baseURL=https://chromedriver.storage.googleapis.com -- -role hub",
+    "selenium-node": "selenium-standalone start --version=3.14.0 --baseURL=https://selenium-release.storage.googleapis.com --drivers.chrome.version=2.43 --drivers.chrome.baseURL=https://chromedriver.storage.googleapis.com -- -role node -hub http://192.168.10.10:4444/grid/register/",
+    "selenium-server": "selenium-standalone start --version=3.14.0 --baseURL=https://selenium-release.storage.googleapis.com --drivers.chrome.version=2.43 --drivers.chrome.baseURL=https://chromedriver.storage.googleapis.com",
     "selenium-server-install": "selenium-standalone install --version=3.14.0 --baseURL=https://selenium-release.storage.googleapis.com --drivers.chrome.version=2.43 --drivers.chrome.baseURL=https://chromedriver.storage.googleapis.com"
   },
   "repository": {
