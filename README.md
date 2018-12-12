@@ -53,9 +53,25 @@ npm run stop
 
 ## How to run automated tests
 
+To run all linters (on localhost):
+```
+npm run lint
+```
 
-To run all functional tests using Behat / Mink - run in terminal
+The following commands you can run only on virtual machine. It will not work on localhost due to different slashes. 
+For windows you need `\\`
 
+To run functional tests using Behat / Mink:
+```
+npm run test-behat
+```
+
+To run unit tests using PHPUnit:
+```
+npm run test-unit
+```
+
+To run functional and unit tests:
 ```
 npm run test
 ```
@@ -63,11 +79,23 @@ npm run test
 or if you want to run selected tests type e.g.
 
 ```
+For Behat:
 npm run test-behat -- features/test-name.feature
 npm run test-behat -- features/test-name.feature:18   // will run scenario under line 18
 npm run test-behat -- --suite=suite-name
 npm run test-behat -- --suite=suite-name features/test-name.feature
+
+For PHPUnit:
+npm run test-phpunit -- --filter testNameOfSpecificTest
+npm run test-phpunit -- --filter testNameOfSpecificTest --debug
+Test with selected provider
+npm run test-phpunit -- --filter "testNameOfSpecificTest #1" --debug
+npm run test-phpunit -- --filter "testNameOfSpecificTest @default response"
+After setting test suites in phpunit.xml
+npm run test-phpunit -- --testsuite entities --debug
 ```
+
+## Selenium server
 
 If you want to run tests in the browser to test JS, you can do this with help of the selenium server.  
 Add '@javascript' on top of your tested scenario
@@ -76,15 +104,44 @@ Add '@javascript' on top of your tested scenario
 Scenario: some scenario
 (...)
 ```
-then boot up selenium-standalone-server by running in the terminal
+then boot up selenium-standalone-server:
+
+#### For testing on local host
+Make sure you have java installed. Check by typing in terminal:
 ```
-npm run selenium-server-start
+java -version
 ```
-finally you can run tests just as it was shown above.
+Then run in local terminal:
+```
+npm run selenium-server
+```
+Finally you can run tests just as it was shown above.
+
+#### For testing on remote machine (Homestead)
+Make sure you have java installed. Check by typing in terminal - locally and on virtual machine (vagrant ssh):
+```
+java -version
+```
+If its not installed on Homestead (by default its not), you can install it by typing:
+```
+sudo apt install default-jre
+```
+
+Then run on virtual machine terminal (make sure you are in project directory (with node_modules)):
+```
+npm run selenium-hub
+```
+
+Then run on local host terminal:
+```
+npm run selenium-node
+```
+Finally you can run tests on remote machine, just as it was shown above. Tests should be opening
+in local browser.
 
 **Note:**
-By default browser tests with selenium driver are run 'silent' in background without even showing browser.
-If you want to see it to debug or whatever, you can turn this off by editing behat.yaml
+If you want to run browser tests with selenium driver as 'silent' in background without even showing browser,
+you can turn this functionality on by editing behat.yaml
 ```
 selenium2:
   browser: chrome
@@ -93,7 +150,7 @@ selenium2:
       switches:
         - "--headless"
 ```
-and removing '--headless' option.
+and uncommenting '--headless' option.
 
 
 ## Author
