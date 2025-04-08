@@ -22,7 +22,7 @@
     "js-lint": "eslint public/js/",
     "js-minify": "uglifyjs --compress typeofs=false --mangle --comments \"/^!/\" --source-map \"url=main.min.js.map\" --output public/js/main.min.js public/js/main.js",
     "php-lint": ".\\vendor\\bin\\phpcs --extensions=php --standard=PSR2 --ignore=public/index\\.php public/ src/",
-    "lint": "npm-run-all --parallel css-lint js-lint php-lint",
+    "lint": "npm-run-all --parallel css-lint js-lint php-lint html-lint",
     "watch": "npm-run-all --parallel watch-*",
     "watch-css": "nodemon --watch public/css/scss/ --ext scss --exec \"npm run css\"",
     "watch-js": "nodemon --watch public/js/ --ignore \"**/*.min.js\" --ignore public/js/vendor/ --ext js --exec \"npm run js\"",

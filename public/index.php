@@ -25,3 +25,5 @@ $request = Request::createFromGlobals();
 $response = $kernel->handle($request);
 $response->send();
 $kernel->terminate($request, $response);
+
+//TODO[Fortel] update README base on suplementy1 OCv3

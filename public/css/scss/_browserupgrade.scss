@@ -2,8 +2,12 @@
    Browser Upgrade Prompt
    ========================================================================== */
 .browserupgrade {
-  padding: .2em 0;
-  margin: .2em 0;
+  display: block;
+  width: 960px;
+  padding: 1rem;
+  margin: 3.125rem auto;
+  font-size: 1.25rem;
   color: #000;
-  background: #ccc;
+  text-align: center;
+  background: #eee;
 }
